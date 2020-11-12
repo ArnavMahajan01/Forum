@@ -1,0 +1,11 @@
+{"message":"This is information","level":"info","timestamp":"2020-11-11T16:52:26.607Z"}
+{"message":"This is information","level":"info","timestamp":"2020-11-11T16:54:13.215Z"}
+{"message":"This is error","level":"error","timestamp":"2020-11-11T16:54:13.216Z"}
+{"message":"This is information","level":"info","timestamp":"2020-11-11T16:54:59.076Z"}
+{"message":"This is error","level":"error","timestamp":"2020-11-11T16:54:59.076Z"}
+{"message":"This is information","level":"info","timestamp":"2020-11-11T16:55:22.288Z"}
+{"message":"This is error","level":"error","timestamp":"2020-11-11T16:55:22.289Z"}
+{"message":"This is debug","level":"debug","timestamp":"2020-11-11T16:55:22.289Z"}
+{"message":"This is error","level":"error","timestamp":"2020-11-11T16:55:38.780Z"}
+{"message":"This is information","level":"info","timestamp":"2020-11-11T16:56:02.563Z"}
+{"message":"This is error","level":"error","timestamp":"2020-11-11T16:56:02.564Z"}
