@@ -4,9 +4,8 @@
 		<title>Escape Velocity Forum</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="/static/assets/css/main.css" />
-		
-		
+        <link rel="stylesheet" href="/static/assets/css/main.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
 	</head>
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
@@ -18,46 +17,55 @@
 						<div id="logo">
 							<h1><a href="index.html">Escape Velocity Forums</a></h1>
 							<p>An active place to interact with people to get answers</p>
-							
 						</div>
 
 					<!-- Nav -->
-					<%- include("_partials/_navbar"); %>
+					<%- include("../_partials/_navbar"); %>
 
-				</section>
-
-			<!-- Intro -->
-				<section id="intro" class="wrapper style1">
-					<div class="title">The Introduction</div>
-					<div class="container">
-						<p class="style1">So in case you were wondering what this is all about ...</p>
-						<p class="style2">
-							Escape Velocity Forum <br/>is being built to provide a space <br/>to interact and get answers<br/>
-							
-						</p>
-						<p class="style3">You are welcome to ask your questions related with the forum category</p>
-						<ul class="actions">
-							<li><a href="#" class="button style3 large">Proceed</a></li>
-						</ul>
-					</div>
 				</section>
 
 			<!-- Main -->
 				<section id="main" class="wrapper style2">
-					<div class="title">Forum Categories</div>
+					<div class="title">Forum - <%= JSON.stringify(cat[0]['forum_category_name']) %></div>
 					<div class="container">
 						<!-- Features -->
 							<section id="features">
 								<div class="feature-list">
 									<div class="row">
-										<%list.forEach(function(entry) { %>
-										<div class="col-6 col-12-medium">
+										
+										<div class="col-12">
 											<section>
-												<h3 class="<%=entry['forum_icon']%>"><a href="forum?id=<%=entry['forum_category_id']%>"><%=entry['forum_category_name']%></h3></a></h3>
-												<p><%=entry['forum_category_description']%></p>
+												<p class="text-right"><a href="/newques?id=<%= JSON.stringify(cat[0]['forum_category_id']) %>"><b>+ New Query</b></a></p>
+												<table id="example" class="display" style="width:100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Question id</th>
+                                                            <th>Question</th>
+                                                            <th>Views</th>
+                                                            <th>Created by</th>
+                                                            <th>Last updated</th>
+                                                            <th>Action</th>
+                                                            
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <%list.forEach(function(entry) { %>
+                                                        <tr>
+                                                            <td><%=entry['question_id']%></td>
+                                                            <td><a href="/question?id=<%=entry['question_id']%>&forum=<%= JSON.stringify(cat[0]['forum_category_id']) %>"><%=entry['question_header']%></a></td>
+                                                            <td><%=entry['views_count']%></td>
+                                                            <td><%=entry['created_by']%></td>
+                                                            <td><%=entry['updated_dt']%></td>
+                                                            <td>view</td>
+                                                        </tr>
+                                                        <%});%>
+                                                    </tbody>
+
+                                                </table>
+                                            
 											</section>
 										</div>
-										<%});%>
+										
 										
 									</div>
 								</div>
@@ -161,19 +169,28 @@
 							</div>
 						</div>
 						<!--Footer-->
-						<%- include("_partials/_footer"); %>
+						<%- include("../_partials/_footer"); %>
 					</div>
 				</section>
 
 		</div>
 
-		<!-- Scripts -->
+        <!-- Scripts -->
+        
+        
 			<script src="/static/assets/js/jquery.min.js"></script>
-			<script src="/static/assets/js/jquery.dropotron.min.js"></script>
+            
+            <script src="/static/assets/js/jquery.dropotron.min.js"></script>
 			<script src="/static/assets/js/browser.min.js"></script>
 			<script src="/static/assets/js/breakpoints.min.js"></script>
 			<script src="/static/assets/js/util.js"></script>
-			<script src="/static/assets/js/main.js"></script>
+            <script src="/static/assets/js/main.js"></script>
+            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 
+            <script>
+                $(document).ready(function() {
+                    $('#example').DataTable();
+                } );
+            </script>
 	</body>
 </html>

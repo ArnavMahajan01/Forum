@@ -3,6 +3,6 @@ var router = express.Router();
 
 router.use("/",require("./home"));
 router.use("/",require("./account"));
-//router.use("/",require("./forum"));
+router.use("/",require("./forum"));
 
 module.exports = router;
